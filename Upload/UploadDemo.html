@@ -1,17 +1,32 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-2.2.3.js"></script>
+    <script>
+        $(function () {
+            $(":file").change(function () {
+                var file = $(this).val();
+                var ext = file.substring(file.lastIndexOf("."));
+                if (ext != ".jpg" && ext != ".png") {
+                    $(this).val("");
+                    return false;
+                } else {
+                    return true;
+                }
+            });
+        });
+    </script>
 </head>
-<body>
-    <form method="post" enctype="multipart/form-data" action="UploadDemo.ashx">
-        <input type="file"  name="imgFile" />
-        <input type="file" name="igFile" />
-        <input  type="submit" value="上传"/>
-    </form>
-    
 
+<body>
+
+
+    <form method="post" enctype="multipart/form-data" action="UploadDemo.ashx">
+        <input type="file" name="imgFile" />
+        <input type="submit" value="上传" />
+    </form>
 </body>
 </html>
